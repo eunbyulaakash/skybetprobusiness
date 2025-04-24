@@ -1,0 +1,2399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkyBetPro - Custom App Development Services</title>
+  <style>
+    /* Reset & Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9fafb;
+    }
+    
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    
+    ul {
+      list-style: none;
+    }
+    
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+    
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    
+    section {
+      padding: 80px 0;
+    }
+    
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+    
+    h3 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    /* Utility Classes */
+    .text-center {
+      text-align: center;
+    }
+    
+    .mt-2 {
+      margin-top: 0.5rem;
+    }
+    
+    .mb-2 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .mt-4 {
+      margin-top: 1rem;
+    }
+    
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    
+    .mt-6 {
+      margin-top: 1.5rem;
+    }
+    
+    .mb-6 {
+      margin-bottom: 1.5rem;
+    }
+    
+    .mt-8 {
+      margin-top: 2rem;
+    }
+    
+    .mb-8 {
+      margin-bottom: 2rem;
+    }
+    
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+    
+    .flex {
+      display: flex;
+    }
+    
+    .flex-col {
+      flex-direction: column;
+    }
+    
+    .items-center {
+      align-items: center;
+    }
+    
+    .justify-center {
+      justify-content: center;
+    }
+    
+    .justify-between {
+      justify-content: space-between;
+    }
+    
+    .gap-4 {
+      gap: 1rem;
+    }
+    
+    .gap-8 {
+      gap: 2rem;
+    }
+    
+    .rounded {
+      border-radius: 0.25rem;
+    }
+    
+    .rounded-lg {
+      border-radius: 0.5rem;
+    }
+    
+    .rounded-xl {
+      border-radius: 0.75rem;
+    }
+    
+    .rounded-full {
+      border-radius: 999px;
+    }
+    
+    .shadow {
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    }
+    
+    .shadow-md {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .shadow-lg {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .text-white {
+      color: #fff;
+    }
+    
+    .bg-white {
+      background-color: #fff;
+    }
+    
+    .bg-primary {
+      background-color: #3b82f6;
+    }
+    
+    .bg-primary-light {
+      background-color: #eff6ff;
+    }
+    
+    .text-primary {
+      color: #3b82f6;
+    }
+    
+    .text-gray {
+      color: #6b7280;
+    }
+    
+    .bg-gray-50 {
+      background-color: #f9fafb;
+    }
+    
+    .bg-gray-100 {
+      background-color: #f3f4f6;
+    }
+    
+    .bg-gray-900 {
+      background-color: #111827;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 0.375rem;
+      transition: all 0.2s;
+    }
+    
+    .btn-primary {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: #dc2626;
+      transform: translateY(-1px);
+    }
+    
+    .btn-outline {
+      background-color: transparent;
+      border: 1px solid #d1d5db;
+    }
+    
+    .btn-outline:hover {
+      background-color: #f9fafb;
+    }
+    
+    /* Header & Navigation */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #fff;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+      padding: 1rem 0;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #3b82f6;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover {
+      color: #3b82f6;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%);
+      color: white;
+      padding: 10rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+    
+    .hero-btns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .hero-image {
+      max-width: 100%;
+      border-radius: 1rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    /* Services Section */
+    .services {
+      background-color: #fff;
+    }
+    
+    .section-head {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 4rem;
+    }
+    
+    .section-badge {
+      display: inline-block;
+      background-color: #eff6ff;
+      color: #3b82f6;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: #6b7280;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .service-card {
+      background-color: #f9fafb;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .service-img {
+      height: 200px;
+      background-color: #f3f4f6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .service-content {
+      padding: 1.5rem;
+    }
+    
+    .service-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    
+    .service-desc {
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .service-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    
+    .service-features li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      color: #6b7280;
+    }
+    
+    .service-features li:before {
+      content: "✓";
+      color: #3b82f6;
+      margin-right: 0.5rem;
+    }
+    
+    /* Features Section */
+    .features {
+      background-color: #f9fafb;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .feature-icon {
+      width: 3.5rem;
+      height: 3.5rem;
+      background-color: #eff6ff;
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: #3b82f6;
+      font-size: 1.5rem;
+    }
+    
+    .feature-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    
+    .feature-desc {
+      color: #6b7280;
+    }
+    
+    /* Process Section */
+    .process {
+      background-color: #fff;
+    }
+    
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .timeline:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background-color: #e5e7eb;
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+    }
+    
+    .timeline-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .timeline-content {
+      width: calc(50% - 2rem);
+      background-color: #f9fafb;
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+    
+    .timeline-content:before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: #f9fafb;
+      transform: rotate(45deg);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content:before {
+      right: -10px;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content:before {
+      left: -10px;
+    }
+    
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #3b82f6;
+      border: 4px solid #fff;
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item:nth-child(1) .timeline-dot {
+      top: 20px;
+    }
+    
+    .timeline-item:nth-child(2) .timeline-dot {
+      top: calc(20px + 4rem);
+    }
+    
+    .timeline-item:nth-child(3) .timeline-dot {
+      top: calc(20px + 8rem);
+    }
+    
+    .timeline-item:nth-child(4) .timeline-dot {
+      top: calc(20px + 12rem);
+    }
+    
+    .timeline-number {
+      width: 2rem;
+      height: 2rem;
+      background-color: #eff6ff;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #3b82f6;
+      margin-bottom: 0.75rem;
+    }
+    
+    .timeline-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    
+    .timeline-desc {
+      color: #6b7280;
+      margin-bottom: 1rem;
+    }
+    
+    .timeline-features {
+      list-style: none;
+    }
+    
+    .timeline-features li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.5rem;
+      color: #6b7280;
+    }
+    
+    .timeline-features li:before {
+      content: "✓";
+      color: #3b82f6;
+      margin-right: 0.5rem;
+    }
+    
+    /* Pricing Section */
+    .pricing {
+      background-color: #f9fafb;
+    }
+    
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .pricing-card {
+      background-color: #fff;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    
+    .pricing-card.popular {
+      transform: scale(1.05);
+      z-index: 1;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .pricing-card.popular:hover {
+      transform: scale(1.05) translateY(-5px);
+    }
+    
+    .pricing-popular-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background-color: #ef4444;
+      color: white;
+      text-align: center;
+      padding: 0.5rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+    
+    .pricing-content {
+      padding: 2rem;
+    }
+    
+    .pricing-card.popular .pricing-content {
+      padding-top: 3.5rem;
+    }
+    
+    .pricing-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .pricing-desc {
+      color: #6b7280;
+      margin-bottom: 1.5rem;
+    }
+    
+    .pricing-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+    }
+    
+    .pricing-price span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #6b7280;
+      margin-left: 0.25rem;
+    }
+    
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+      color: #6b7280;
+    }
+    
+    .pricing-features li.included:before {
+      content: "✓";
+      color: #3b82f6;
+      margin-right: 0.5rem;
+    }
+    
+    .pricing-features li.not-included {
+      color: #9ca3af;
+    }
+    
+    .pricing-features li.not-included:before {
+      content: "✕";
+      color: #9ca3af;
+      margin-right: 0.5rem;
+    }
+    
+    .pricing-btn {
+      width: 100%;
+    }
+    
+    /* Payment Form Section */
+    .payment {
+      background-color: #fff;
+    }
+    
+    .payment-form-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background-color: #f9fafb;
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .payment-form-row {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    .payment-form-sidebar {
+      flex: 1;
+      min-width: 300px;
+      background-color: #3b82f6;
+      color: white;
+      padding: 2rem;
+    }
+    
+    .payment-form-col {
+      flex: 1;
+      min-width: 300px;
+      padding: 2rem;
+    }
+    
+    .payment-sidebar-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .payment-sidebar-desc {
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .payment-features {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+    
+    .payment-features li {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+    
+    .payment-features li:before {
+      content: "✓";
+      margin-right: 0.75rem;
+    }
+    
+    .payment-contact-box {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      border-radius: 0.5rem;
+    }
+    
+    .payment-contact-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+    
+    .payment-contact-desc {
+      font-size: 0.875rem;
+      opacity: 0.9;
+      margin-bottom: 0.75rem;
+    }
+    
+    .payment-contact-link {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      transition: opacity 0.2s;
+    }
+    
+    .payment-contact-link:hover {
+      opacity: 0.8;
+    }
+    
+    .payment-contact-icon {
+      margin-right: 0.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+    
+    .form-required {
+      color: #ef4444;
+    }
+    
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      background-color: white;
+      font-size: 1rem;
+      color: #111827;
+    }
+    
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    
+    .form-textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    
+    .form-submit {
+      width: 100%;
+    }
+    
+    .form-terms {
+      font-size: 0.875rem;
+      color: #6b7280;
+      margin-top: 0.75rem;
+    }
+    
+    .form-terms a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    
+    .form-terms a:hover {
+      text-decoration: underline;
+    }
+    
+    /* Testimonials Section */
+    .testimonials {
+      background-color: #f9fafb;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .testimonial-card {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+    
+    .testimonial-quote-icon {
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    
+    .testimonial-content {
+      font-style: italic;
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .testimonial-content:before {
+      content: '"';
+      font-size: 4rem;
+      color: #f3f4f6;
+      position: absolute;
+      top: -2rem;
+      left: -1rem;
+      z-index: -1;
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+    }
+    
+    .testimonial-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: #e5e7eb;
+      margin-right: 1rem;
+    }
+    
+    .testimonial-name {
+      font-weight: 600;
+      color: #111827;
+    }
+    
+    .testimonial-title {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+    
+    /* Contact Section */
+    .contact {
+      background-color: #fff;
+    }
+    
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .contact-info {
+      background-color: #f9fafb;
+      padding: 2rem;
+      border-radius: 1rem;
+    }
+    
+    .contact-info-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-info-item {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-info-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #eff6ff;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3b82f6;
+      margin-right: 1rem;
+      flex-shrink: 0;
+    }
+    
+    .contact-info-content h4 {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.25rem;
+    }
+    
+    .contact-info-content p {
+      color: #6b7280;
+    }
+    
+    .contact-social {
+      margin-top: 2rem;
+    }
+    
+    .contact-social h4 {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 1rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-link {
+      width: 2.5rem;
+      height: 2.5rem;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s;
+    }
+    
+    .social-link:hover {
+      background-color: #2563eb;
+    }
+    
+    /* Footer */
+    .footer {
+      background-color: #111827;
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+    
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer-logo-icon {
+      margin-right: 0.5rem;
+    }
+    
+    .footer-desc {
+      color: #9ca3af;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-social {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .footer-social-link {
+      color: #9ca3af;
+      transition: color 0.2s;
+    }
+    
+    .footer-social-link:hover {
+      color: white;
+    }
+    
+    .footer-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+    
+    .footer-links a {
+      color: #9ca3af;
+      transition: color 0.2s;
+    }
+    
+    .footer-links a:hover {
+      color: white;
+    }
+    
+    .footer-copyright {
+      text-align: center;
+      border-top: 1px solid #1f2937;
+      padding-top: 2rem;
+      color: #9ca3af;
+      font-size: 0.875rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      section {
+        padding: 60px 0;
+      }
+      
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+      
+      .hero {
+        padding: 8rem 0 4rem;
+      }
+      
+      .hero-content {
+        text-align: center;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-btns {
+        justify-content: center;
+      }
+      
+      .hero-image-container {
+        margin-top: 3rem;
+      }
+      
+      .timeline:before {
+        left: 0;
+      }
+      
+      .timeline-item,
+      .timeline-item:nth-child(even) {
+        flex-direction: column;
+      }
+      
+      .timeline-content {
+        width: 100%;
+        margin-left: 2rem;
+      }
+      
+      .timeline-content:before {
+        display: none;
+      }
+      
+      .timeline-dot {
+        left: 0;
+      }
+      
+      .payment-form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container flex justify-between items-center">
+      <a href="#" class="logo flex items-center">
+        <span class="text-primary mr-2">⟢</span>
+        SkyBetPro
+      </a>
+      <nav>
+        <button class="mobile-menu-btn">☰</button>
+        <ul class="nav-links">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#payment" class="btn btn-primary">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 3rem;">
+        <div class="hero-content">
+          <span class="hero-badge">#1 Custom App Development Service</span>
+          <h1 class="hero-title">
+            Transform Your Ideas Into
+            <span style="text-decoration: underline; text-decoration-color: #EF4444;">Powerful Apps</span>
+          </h1>
+          <p class="hero-subtitle">
+            We build custom mobile and web applications that drive growth, engagement, and revenue for your business.
+          </p>
+          <div class="hero-btns">
+            <a href="#payment" class="btn btn-primary">
+              Start Your Project
+              <span style="margin-left: 0.5rem;">→</span>
+            </a>
+            <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">
+              Explore Services
+            </a>
+          </div>
+        </div>
+        <div class="hero-image-container">
+          <div style="position: relative; transform: rotate(6deg);">
+            <div style="position: absolute; inset: 0; background-color: #1E40AF; opacity: 0.1; border-radius: 1.5rem;"></div>
+            <div style="position: relative; z-index: 10; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+              <!-- App mockup SVG -->
+              <svg width="100%" height="100%" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="500" height="400" fill="#F3F4F6" />
+                <rect x="50" y="50" width="400" height="80" rx="4" fill="#E5E7EB" />
+                <rect x="50" y="150" width="190" height="200" rx="4" fill="#E5E7EB" />
+                <rect x="260" y="150" width="190" height="200" rx="4" fill="#E5E7EB" />
+                <circle cx="250" cy="50" r="20" fill="#3B82F6" />
+                <path d="M80 80H420" stroke="#D1D5DB" stroke-width="2" />
+                <path d="M80 180H210" stroke="#D1D5DB" stroke-width="2" />
+                <path d="M290 180H420" stroke="#D1D5DB" stroke-width="2" />
+                <rect x="80" y="200" width="130" height="10" rx="2" fill="#D1D5DB" />
+                <rect x="290" y="200" width="130" height="10" rx="2" fill="#D1D5DB" />
+                <rect x="80" y="220" width="100" height="10" rx="2" fill="#D1D5DB" />
+                <rect x="290" y="220" width="100" height="10" rx="2" fill="#D1D5DB" />
+                <rect x="80" y="280" width="70" height="25" rx="4" fill="#3B82F6" />
+                <rect x="290" y="280" width="70" height="25" rx="4" fill="#3B82F6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="grid mt-8" style="grid-template-columns: repeat(4, 1fr); gap: 2rem;">
+        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+          <div style="height: 2rem;">
+            <svg viewBox="0 0 150 50" class="h-full mx-auto">
+              <rect width="150" height="50" fill="none" />
+              <path d="M30 25C30 18.1 35.1 13 42 13H108C114.9 13 120 18.1 120 25C120 31.9 114.9 37 108 37H42C35.1 37 30 31.9 30 25Z" fill="white" fill-opacity="0.3" />
+              <path d="M45 25L60 25M90 25L105 25" stroke="white" stroke-width="2" />
+              <circle cx="75" cy="25" r="10" stroke="white" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+          <div style="height: 2rem;">
+            <svg viewBox="0 0 150 50" class="h-full mx-auto">
+              <rect width="150" height="50" fill="none" />
+              <rect x="40" y="15" width="70" height="20" rx="5" stroke="white" stroke-width="2" />
+              <path d="M50 25H100" stroke="white" stroke-width="2" />
+              <circle cx="60" cy="25" r="5" fill="white" />
+            </svg>
+          </div>
+        </div>
+        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+          <div style="height: 2rem;">
+            <svg viewBox="0 0 150 50" class="h-full mx-auto">
+              <rect width="150" height="50" fill="none" />
+              <path d="M50 15L75 35L100 15" stroke="white" stroke-width="2" />
+              <path d="M40 25H110" stroke="white" stroke-width="2" />
+              <circle cx="75" cy="25" r="8" fill="white" fill-opacity="0.3" stroke="white" stroke-width="2" />
+            </svg>
+          </div>
+        </div>
+        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+          <div style="height: 2rem;">
+            <svg viewBox="0 0 150 50" class="h-full mx-auto">
+              <rect width="150" height="50" fill="none" />
+              <rect x="50" y="15" width="50" height="20" rx="10" stroke="white" stroke-width="2" />
+              <circle cx="60" cy="25" r="5" fill="white" />
+              <circle cx="75" cy="25" r="5" fill="white" />
+              <circle cx="90" cy="25" r="5" fill="white" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Our Services</span>
+        <h2 class="section-title">Custom App Development Solutions</h2>
+        <p class="section-subtitle">We build tailored digital experiences that solve real business problems and drive growth.</p>
+      </div>
+
+      <div class="services-grid">
+        <!-- Mobile App Development -->
+        <div class="service-card">
+          <div class="service-img">
+            <svg width="100%" height="100%" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="700" height="400" fill="#F9FAFB" />
+              <rect x="200" y="50" width="300" height="300" rx="20" fill="#E5E7EB" />
+              <rect x="230" y="80" width="240" height="180" rx="8" fill="#F3F4F6" />
+              <circle cx="350" cy="300" r="20" stroke="#D1D5DB" stroke-width="2" />
+              <rect x="240" y="100" width="100" height="10" rx="2" fill="#3B82F6" />
+              <rect x="240" y="120" width="220" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="240" y="140" width="180" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="240" y="180" width="50" height="50" rx="4" fill="#3B82F6" opacity="0.2" />
+              <rect x="300" y="180" width="50" height="50" rx="4" fill="#3B82F6" opacity="0.2" />
+              <rect x="360" y="180" width="50" height="50" rx="4" fill="#3B82F6" opacity="0.2" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Mobile App Development</h3>
+            <p class="service-desc">Native and cross-platform apps for iOS and Android that deliver exceptional user experiences.</p>
+            <ul class="service-features">
+              <li>iOS & Android Apps</li>
+              <li>React Native & Flutter</li>
+              <li>UI/UX Design</li>
+            </ul>
+            <a href="#pricing" class="text-primary">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Web App Development -->
+        <div class="service-card">
+          <div class="service-img">
+            <svg width="100%" height="100%" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="700" height="400" fill="#F9FAFB" />
+              <rect x="100" y="80" width="500" height="300" rx="4" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2" />
+              <rect x="100" y="80" width="500" height="40" rx="4" fill="#E5E7EB" />
+              <circle cx="125" cy="100" r="5" fill="#EF4444" />
+              <circle cx="145" cy="100" r="5" fill="#FBBF24" />
+              <circle cx="165" cy="100" r="5" fill="#10B981" />
+              <rect x="120" y="140" width="180" height="20" rx="2" fill="#3B82F6" />
+              <rect x="120" y="170" width="460" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="120" y="190" width="380" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="120" y="220" width="140" height="140" rx="4" fill="#E5E7EB" />
+              <rect x="280" y="220" width="140" height="140" rx="4" fill="#E5E7EB" />
+              <rect x="440" y="220" width="140" height="140" rx="4" fill="#E5E7EB" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Web App Development</h3>
+            <p class="service-desc">Progressive web applications that work seamlessly across all devices and browsers.</p>
+            <ul class="service-features">
+              <li>Responsive Design</li>
+              <li>React, Vue & Angular</li>
+              <li>Full-Stack Development</li>
+            </ul>
+            <a href="#pricing" class="text-primary">Learn More →</a>
+          </div>
+        </div>
+
+        <!-- Custom Software Solutions -->
+        <div class="service-card">
+          <div class="service-img">
+            <svg width="100%" height="100%" viewBox="0 0 700 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="700" height="400" fill="#F9FAFB" />
+              <rect x="150" y="100" width="400" height="200" rx="8" fill="#F3F4F6" stroke="#E5E7EB" stroke-width="2" />
+              <path d="M150 130H550" stroke="#E5E7EB" stroke-width="2" />
+              <circle cx="175" cy="115" r="5" fill="#3B82F6" />
+              <circle cx="195" cy="115" r="5" fill="#3B82F6" />
+              <circle cx="215" cy="115" r="5" fill="#3B82F6" />
+              <rect x="170" y="150" width="140" height="10" rx="2" fill="#3B82F6" />
+              <rect x="170" y="170" width="360" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="170" y="190" width="300" height="10" rx="2" fill="#D1D5DB" />
+              <rect x="170" y="220" width="120" height="40" rx="4" fill="#3B82F6" opacity="0.2" />
+              <path d="M180 240H280" stroke="#3B82F6" stroke-width="2" />
+              <path d="M190 230V250" stroke="#3B82F6" stroke-width="2" />
+              <path d="M270 230V250" stroke="#3B82F6" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="service-content">
+            <h3 class="service-title">Custom Software Solutions</h3>
+            <p class="service-desc">Bespoke software solutions tailored to your specific business requirements.</p>
+            <ul class="service-features">
+              <li>Enterprise Solutions</li>
+              <li>API Development</li>
+              <li>Cloud Integration</li>
+            </ul>
+            <a href="#pricing" class="text-primary">Learn More →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Why Choose Us</span>
+        <h2 class="section-title">App Development Excellence</h2>
+        <p class="section-subtitle">Our approach combines technical expertise, creative design, and business strategy to create apps that stand out.</p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Rapid Development -->
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3 class="feature-title">Rapid Development</h3>
+          <p class="feature-desc">Get your app to market faster with our agile development methodology and experienced team.</p>
+        </div>
+
+        <!-- Stunning Design -->
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3 class="feature-title">Stunning Design</h3>
+          <p class="feature-desc">Beautiful, intuitive interfaces that engage users and reflect your brand identity.</p>
+        </div>
+
+        <!-- Scalable Solutions -->
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3 class="feature-title">Scalable Solutions</h3>
+          <p class="feature-desc">Build apps that can grow with your business, from MVP to enterprise-scale solutions.</p>
+        </div>
+
+        <!-- Dedicated Support -->
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3 class="feature-title">Dedicated Support</h3>
+          <p class="feature-desc">Ongoing maintenance and support to ensure your app continues to perform optimally.</p>
+        </div>
+
+        <!-- Secure & Reliable -->
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <h3 class="feature-title">Secure & Reliable</h3>
+          <p class="feature-desc">Built with security in mind from the ground up, protecting your data and users.</p>
+        </div>
+
+        <!-- Transparent Pricing -->
+        <div class="feature-card">
+          <div class="feature-icon">🏷️</div>
+          <h3 class="feature-title">Transparent Pricing</h3>
+          <p class="feature-desc">Clear, honest pricing with no hidden fees or unexpected costs throughout the project.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section id="process" class="process">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">How We Work</span>
+        <h2 class="section-title">Our Development Process</h2>
+        <p class="section-subtitle">We follow a structured approach to ensure your app is developed efficiently and meets your expectations.</p>
+      </div>
+
+      <div class="timeline">
+        <!-- Discovery & Planning -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-number">1</div>
+            <h3 class="timeline-title">Discovery & Planning</h3>
+            <p class="timeline-desc">We'll work with you to understand your business goals, target audience, and app requirements. Together, we'll create a detailed project roadmap.</p>
+            <ul class="timeline-features">
+              <li>Requirements gathering</li>
+              <li>Project scoping</li>
+              <li>Timeline & budget planning</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Design & Prototyping -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-number">2</div>
+            <h3 class="timeline-title">Design & Prototyping</h3>
+            <p class="timeline-desc">Our designers create wireframes and interactive prototypes to visualize the app's user interface and experience before development begins.</p>
+            <ul class="timeline-features">
+              <li>UI/UX design</li>
+              <li>Wireframing</li>
+              <li>Interactive prototyping</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Development -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-number">3</div>
+            <h3 class="timeline-title">Development</h3>
+            <p class="timeline-desc">Our developers build your app using the latest technologies and best practices, with regular updates on progress throughout the process.</p>
+            <ul class="timeline-features">
+              <li>Frontend & backend development</li>
+              <li>Agile methodology</li>
+              <li>Regular progress updates</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Testing & Launch -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-number">4</div>
+            <h3 class="timeline-title">Testing & Launch</h3>
+            <p class="timeline-desc">We rigorously test your app to ensure it works flawlessly across all devices, then help you launch it to your users.</p>
+            <ul class="timeline-features">
+              <li>Quality assurance testing</li>
+              <li>Deployment assistance</li>
+              <li>Launch support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a href="#payment" class="btn btn-primary">
+          Start Your Project Now
+          <span style="margin-left: 0.5rem;">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Pricing Plans</span>
+        <h2 class="section-title">Transparent, Flexible Pricing</h2>
+        <p class="section-subtitle">Choose the package that fits your business needs and budget. All plans include ongoing support and maintenance.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <!-- Starter Plan -->
+        <div class="pricing-card">
+          <div class="pricing-content">
+            <h3 class="pricing-title">Starter</h3>
+            <p class="pricing-desc">Perfect for small businesses looking to create their first app.</p>
+            <div class="pricing-price">
+              $4,999<span>/project</span>
+            </div>
+            <ul class="pricing-features">
+              <li class="included">Single platform (iOS or Android)</li>
+              <li class="included">Up to 5 key features</li>
+              <li class="included">Basic UI/UX design</li>
+              <li class="included">3 months support</li>
+              <li class="not-included">Advanced analytics</li>
+              <li class="not-included">Integration capabilities</li>
+            </ul>
+            <a href="#payment" class="btn btn-outline pricing-btn">Choose Starter</a>
+          </div>
+        </div>
+
+        <!-- Professional Plan -->
+        <div class="pricing-card popular">
+          <div class="pricing-popular-badge">Most Popular</div>
+          <div class="pricing-content">
+            <h3 class="pricing-title">Professional</h3>
+            <p class="pricing-desc">Comprehensive solution for businesses ready to grow.</p>
+            <div class="pricing-price">
+              $9,999<span>/project</span>
+            </div>
+            <ul class="pricing-features">
+              <li class="included">Cross-platform (iOS and Android)</li>
+              <li class="included">Up to 10 key features</li>
+              <li class="included">Premium UI/UX design</li>
+              <li class="included">6 months support</li>
+              <li class="included">Basic analytics</li>
+              <li class="not-included">API integrations</li>
+            </ul>
+            <a href="#payment" class="btn btn-primary pricing-btn">Choose Professional</a>
+          </div>
+        </div>
+
+        <!-- Enterprise Plan -->
+        <div class="pricing-card">
+          <div class="pricing-content">
+            <h3 class="pricing-title">Enterprise</h3>
+            <p class="pricing-desc">Full-featured solution for large businesses with complex needs.</p>
+            <div class="pricing-price">
+              $19,999+<span>/project</span>
+            </div>
+            <ul class="pricing-features">
+              <li class="included">All platforms (iOS, Android, Web)</li>
+              <li class="included">Unlimited features</li>
+              <li class="included">Custom UI/UX design</li>
+              <li class="included">12 months support</li>
+              <li class="included">Advanced analytics</li>
+              <li class="included">Third-party integrations</li>
+            </ul>
+            <a href="#payment" class="btn btn-outline pricing-btn">Choose Enterprise</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <p class="text-gray mb-4">Need a custom solution?</p>
+        <a href="#contact" class="btn btn-outline">Contact Us for Custom Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payment Form Section -->
+  <section id="payment" class="payment">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Get Started</span>
+        <h2 class="section-title">Start Your App Development Journey</h2>
+        <p class="section-subtitle">Fill out the form below to begin your project. Our team will contact you within 24 hours to discuss your needs.</p>
+      </div>
+
+      <div class="payment-form-container">
+        <div class="payment-form-row">
+          <div class="payment-form-sidebar">
+            <h3 class="payment-sidebar-title">Your New App Starts Here</h3>
+            <p class="payment-sidebar-desc">Complete this form to initiate your project. We'll guide you through every step of the app development process.</p>
+            <ul class="payment-features">
+              <li>No commitment consultation</li>
+              <li>Transparent pricing</li>
+              <li>Secure payment options</li>
+            </ul>
+            <div class="payment-contact-box">
+              <p class="payment-contact-title">Questions?</p>
+              <p class="payment-contact-desc">Our team is ready to assist you with any questions you may have about our services or pricing.</p>
+              <a href="tel:+11234567890" class="payment-contact-link">
+                <span class="payment-contact-icon">📞</span>
+                +1 (123) 456-7890
+              </a>
+              <a href="mailto:info@skybetpro.com" class="payment-contact-link">
+                <span class="payment-contact-icon">✉️</span>
+                info@skybetpro.com
+              </a>
+            </div>
+          </div>
+          <div class="payment-form-col">
+            <form id="payment-form">
+              <div class="form-group">
+                <label for="name" class="form-label">Full Name <span class="form-required">*</span></label>
+                <input type="text" id="name" name="name" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Email Address <span class="form-required">*</span></label>
+                <input type="email" id="email" name="email" class="form-input" required>
+              </div>
+              <div class="form-group">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-input">
+              </div>
+              <div class="form-group">
+                <label for="plan" class="form-label">Select Package <span class="form-required">*</span></label>
+                <select id="plan" name="plan" class="form-select" required>
+                  <option value="" disabled selected>Choose a package</option>
+                  <option value="starter">Starter - $4,999</option>
+                  <option value="professional">Professional - $9,999</option>
+                  <option value="enterprise">Enterprise - $19,999+</option>
+                  <option value="custom">Custom Solution</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Project Details</label>
+                <textarea id="message" name="message" class="form-textarea" placeholder="Tell us about your app idea..."></textarea>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary form-submit">Proceed to Payment</button>
+              </div>
+              <p class="form-terms">
+                By submitting this form, you agree to our 
+                <a href="terms-of-service.html" target="_blank" rel="noopener noreferrer">Terms of Service</a>, 
+                <a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>, 
+                <a href="refund-policy.html" target="_blank" rel="noopener noreferrer">Refund Policy</a> and 
+                <a href="disclaimer.html" target="_blank" rel="noopener noreferrer">Disclaimer</a>.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Success Stories</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Don't just take our word for it. Hear from businesses that have transformed with our custom app solutions.</p>
+      </div>
+
+      <div class="testimonial-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <p class="testimonial-content">
+            SkyBetPro transformed our business idea into a functional app that our customers love. Their team was professional, responsive, and delivered beyond our expectations.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <!-- Avatar placeholder -->
+              <svg viewBox="0 0 100 100" width="100%" height="100%">
+                <circle cx="50" cy="40" r="20" fill="#E5E7EB" />
+                <circle cx="50" cy="100" r="40" fill="#E5E7EB" />
+              </svg>
+            </div>
+            <div>
+              <div class="testimonial-name">Sarah Johnson</div>
+              <div class="testimonial-title">CEO, FitTech Solutions</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <p class="testimonial-content">
+            Working with SkyBetPro was a game-changer for our startup. They helped us launch our MVP quickly and iterate based on user feedback. Our app now has over 50,000 downloads!
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <!-- Avatar placeholder -->
+              <svg viewBox="0 0 100 100" width="100%" height="100%">
+                <circle cx="50" cy="40" r="20" fill="#E5E7EB" />
+                <circle cx="50" cy="100" r="40" fill="#E5E7EB" />
+              </svg>
+            </div>
+            <div>
+              <div class="testimonial-name">David Chen</div>
+              <div class="testimonial-title">Founder, Travelista</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote-icon">"</div>
+          <p class="testimonial-content">
+            The enterprise solution SkyBetPro built for us has streamlined our operations and increased efficiency by 40%. Their team's expertise and commitment to quality are unmatched.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">
+              <!-- Avatar placeholder -->
+              <svg viewBox="0 0 100 100" width="100%" height="100%">
+                <circle cx="50" cy="40" r="20" fill="#E5E7EB" />
+                <circle cx="50" cy="100" r="40" fill="#E5E7EB" />
+              </svg>
+            </div>
+            <div>
+              <div class="testimonial-name">Jennifer Williams</div>
+              <div class="testimonial-title">CTO, GreenField Logistics</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-badge">Get in Touch</span>
+        <h2 class="section-title">We'd Love to Hear From You</h2>
+        <p class="section-subtitle">Have questions about our services? Need a custom quote? Our team is ready to assist you.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="contact-name" class="form-label">Full Name <span class="form-required">*</span></label>
+              <input type="text" id="contact-name" name="name" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email" class="form-label">Email Address <span class="form-required">*</span></label>
+              <input type="email" id="contact-email" name="email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject" class="form-label">Subject</label>
+              <input type="text" id="contact-subject" name="subject" class="form-input">
+            </div>
+            <div class="form-group">
+              <label for="contact-message" class="form-label">Message <span class="form-required">*</span></label>
+              <textarea id="contact-message" name="message" class="form-textarea" rows="5" required></textarea>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h3 class="contact-info-title">Contact Information</h3>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div class="contact-info-content">
+              <h4>Our Location</h4>
+              <p>
+                123 App Dev Street<br>
+                San Francisco, CA 94107<br>
+                United States
+              </p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div class="contact-info-content">
+              <h4>Call Us</h4>
+              <p>
+                +1 (123) 456-7890<br>
+                Mon-Fri, 9am-6pm PST
+              </p>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <div class="contact-info-icon">✉️</div>
+            <div class="contact-info-content">
+              <h4>Email Us</h4>
+              <p>
+                info@skybetpro.com<br>
+                support@skybetpro.com
+              </p>
+            </div>
+          </div>
+          
+          <div class="contact-social">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a href="#" class="social-link">f</a>
+              <a href="#" class="social-link">t</a>
+              <a href="#" class="social-link">y</a>
+              <a href="#" class="social-link">in</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <span class="footer-logo-icon">⟢</span>
+            SkyBetPro
+          </div>
+          <p class="footer-desc">
+            We build custom mobile and web applications that drive growth and engagement for businesses worldwide.
+          </p>
+          <div class="footer-social">
+            <a href="#" class="footer-social-link">f</a>
+            <a href="#" class="footer-social-link">t</a>
+            <a href="#" class="footer-social-link">y</a>
+            <a href="#" class="footer-social-link">in</a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li><a href="#services">Mobile App Development</a></li>
+            <li><a href="#services">Web App Development</a></li>
+            <li><a href="#services">Custom Software Solutions</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+            <li><a href="#services">App Maintenance</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="footer-title">Company</h3>
+          <ul class="footer-links">
+            <li><a href="#" onclick="openModal('about-modal')">About Us</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#" onclick="openModal('careers-modal')">Careers</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="footer-title">Legal</h3>
+          <ul class="footer-links">
+            <li><a href="terms-of-service.html" target="_blank" rel="noopener noreferrer">Terms of Service</a></li>
+            <li><a href="privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><a href="disclaimer.html" target="_blank" rel="noopener noreferrer">Disclaimer</a></li>
+            <li><a href="refund-policy.html" target="_blank" rel="noopener noreferrer">Refund & Return Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-copyright">
+        <p>&copy; 2023 SkyBetPro. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Container -->
+  <div id="modal-container" class="modal-container" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button class="modal-close" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="terms-modal" class="modal-section" style="display: none;">
+          <h2>Terms of Service</h2>
+          <p>Last Updated: April 24, 2023</p>
+          
+          <h3>1. Introduction</h3>
+          <p>Welcome to SkyBetPro ("Company", "we", "our", "us"). These Terms of Service ("Terms", "Terms of Service") govern your use of our website and services operated by SkyBetPro.</p>
+          <p>By accessing or using our service, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access the service.</p>
+          
+          <h3>2. Use of Services</h3>
+          <p>Our services are available only to individuals who are at least 18 years old. By accessing or using our services, you represent and warrant that you are at least 18 years old and have the legal capacity to enter into a binding agreement.</p>
+          
+          <h3>3. Custom App Development Services</h3>
+          <p>SkyBetPro provides custom application development services for iOS, Android, and web platforms. The specifics of each project, including scope, timeline, and deliverables, will be outlined in a separate agreement or statement of work provided to you before the commencement of any project.</p>
+          
+          <h3>4. Payments and Billing</h3>
+          <p>Payment terms will be specified in your individual project agreement. Unless otherwise stated, we typically require a deposit before beginning work, with remaining payments due at predefined milestones or upon project completion.</p>
+          <p>All fees are exclusive of all taxes, levies, or duties imposed by taxing authorities, and you shall be responsible for payment of all such taxes, levies, or duties.</p>
+          
+          <h3>5. Intellectual Property Rights</h3>
+          <p>Upon full payment of all applicable fees, you will receive ownership rights to the final deliverables as specified in your individual agreement. However, we retain ownership of all pre-existing materials, including frameworks, development tools, and programming techniques that we use to create your application.</p>
+          
+          <h3>6. Project Changes and Cancellation</h3>
+          <p>Changes to project scope may result in additional fees and timeline adjustments. Project cancellations must be submitted in writing, and you may be responsible for payment of work completed up to the date of cancellation plus any non-refundable expenses incurred.</p>
+          
+          <h3>7. Limitation of Liability</h3>
+          <p>In no event shall SkyBetPro, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the service.</p>
+          
+          <h3>8. Indemnification</h3>
+          <p>You agree to defend, indemnify and hold harmless SkyBetPro and its employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses, including but not limited to attorney's fees, arising from your use of the service.</p>
+          
+          <h3>9. Governing Law</h3>
+          <p>These Terms shall be governed and construed in accordance with the laws of the country in which SkyBetPro is established, without regard to its conflict of law provisions.</p>
+          
+          <h3>10. Changes to Terms</h3>
+          <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our service after those revisions become effective, you agree to be bound by the revised terms.</p>
+          
+          <h3>11. Contact Us</h3>
+          <p>If you have any questions about these Terms, please contact us at info@skybetpro.com.</p>
+        </div>
+
+        <div id="privacy-modal" class="modal-section" style="display: none;">
+          <h2>Privacy Policy</h2>
+          <p>Last Updated: April 24, 2023</p>
+          
+          <h3>1. Introduction</h3>
+          <p>At SkyBetPro, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our app development services.</p>
+          
+          <h3>2. Information We Collect</h3>
+          <p>We may collect several types of information from and about users of our website and services, including:</p>
+          <ul>
+            <li><strong>Personal Data:</strong> Name, email address, telephone number, billing address, and payment information.</li>
+            <li><strong>Business Information:</strong> Company name, industry, size, and specific requirements for app development.</li>
+            <li><strong>Technical Data:</strong> IP address, browser type and version, time zone setting, browser plug-in types and versions, operating system and platform, and other technology on the devices you use to access our website.</li>
+            <li><strong>Usage Data:</strong> Information about how you use our website and services.</li>
+          </ul>
+          
+          <h3>3. How We Collect Your Information</h3>
+          <p>We collect information through:</p>
+          <ul>
+            <li>Direct interactions when you fill in forms on our website or correspond with us.</li>
+            <li>Automated technologies or interactions, such as cookies or similar technologies.</li>
+            <li>Third parties or publicly available sources, such as analytics providers or business partners.</li>
+          </ul>
+          
+          <h3>4. How We Use Your Information</h3>
+          <p>We use your personal information for the following purposes:</p>
+          <ul>
+            <li>To provide and maintain our services</li>
+            <li>To process and complete transactions</li>
+            <li>To communicate with you about our services, updates, and support</li>
+            <li>To improve our website and services</li>
+            <li>To comply with legal obligations</li>
+          </ul>
+          
+          <h3>5. Sharing Your Information</h3>
+          <p>We may share your personal information with:</p>
+          <ul>
+            <li>Service providers who perform services on our behalf</li>
+            <li>Professional advisers including lawyers, bankers, auditors, and insurers</li>
+            <li>Regulatory authorities, law enforcement agencies, and other third parties as required by law</li>
+          </ul>
+          
+          <h3>6. Data Security</h3>
+          <p>We have implemented appropriate security measures to prevent your personal information from being accidentally lost, used, accessed, altered, or disclosed in an unauthorized way. We limit access to your personal information to employees, agents, contractors, and other third parties who have a business need to know.</p>
+          
+          <h3>7. Data Retention</h3>
+          <p>We will retain your personal information only for as long as reasonably necessary to fulfill the purposes for which we collected it, including for the purposes of satisfying any legal, regulatory, tax, accounting, or reporting requirements.</p>
+          
+          <h3>8. Your Rights</h3>
+          <p>Depending on your location, you may have the following rights regarding your personal information:</p>
+          <ul>
+            <li>Right to access, correct, update, or request deletion of your personal information</li>
+            <li>Right to object to processing of your personal information</li>
+            <li>Right to restrict processing of your personal information</li>
+            <li>Right to data portability</li>
+            <li>Right to withdraw your consent</li>
+          </ul>
+          
+          <h3>9. Cookies</h3>
+          <p>We use cookies and similar tracking technologies to track activity on our website and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
+          
+          <h3>10. Changes to This Privacy Policy</h3>
+          <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.</p>
+          
+          <h3>11. Contact Us</h3>
+          <p>If you have any questions about this Privacy Policy, please contact us at privacy@skybetpro.com.</p>
+        </div>
+
+        <div id="disclaimer-modal" class="modal-section" style="display: none;">
+          <h2>Disclaimer</h2>
+          <p>Last Updated: April 24, 2023</p>
+          
+          <h3>1. Interpretation and Definitions</h3>
+          <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+          
+          <h3>2. Disclaimer</h3>
+          <p>The information provided by SkyBetPro on our website is for general informational purposes only. All information on the website is provided in good faith, however we make no representation or warranty of any kind, express or implied, regarding the accuracy, adequacy, validity, reliability, availability, or completeness of any information on the website.</p>
+          <p>Under no circumstance shall we have any liability to you for any loss or damage of any kind incurred as a result of the use of the website or reliance on any information provided on the website. Your use of the website and your reliance on any information on the website is solely at your own risk.</p>
+          
+          <h3>3. External Links Disclaimer</h3>
+          <p>The website may contain links to external websites that are not provided or maintained by or in any way affiliated with SkyBetPro. Please note that we do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.</p>
+          
+          <h3>4. Errors and Omissions Disclaimer</h3>
+          <p>The information given by SkyBetPro is for general guidance on matters of interest only. Even if SkyBetPro takes every precaution to ensure that the content of the website is both current and accurate, errors can occur. Plus, given the changing nature of laws, rules, and regulations, there may be delays, omissions, or inaccuracies in the information contained on the website.</p>
+          <p>SkyBetPro is not responsible for any errors or omissions, or for the results obtained from the use of this information.</p>
+          
+          <h3>5. Fair Use Disclaimer</h3>
+          <p>SkyBetPro may use copyrighted material which has not always been specifically authorized by the copyright owner. We are making such material available for criticism, comment, news reporting, teaching, scholarship, or research.</p>
+          <p>We believe this constitutes a "fair use" of any such copyrighted material as provided for in section 107 of the US Copyright Law. If you wish to use copyrighted material from the website for your own purposes that go beyond fair use, you must obtain permission from the copyright owner.</p>
+          
+          <h3>6. Views Expressed Disclaimer</h3>
+          <p>The website may contain views and opinions which are those of the authors and do not necessarily reflect the official policy or position of any other author, agency, organization, employer, or company, including SkyBetPro.</p>
+          <p>Comments published by users are their sole responsibility and the users will take full responsibility, liability, and blame for any libel or litigation that results from something written in or as a direct result of something written in a comment. SkyBetPro is not liable for any comment published by users and reserves the right to delete any comment for any reason whatsoever.</p>
+          
+          <h3>7. No Responsibility Disclaimer</h3>
+          <p>The information on the website is provided with the understanding that SkyBetPro is not herein engaged in rendering legal, accounting, tax, or other professional advice and services. As such, it should not be used as a substitute for consultation with professional accounting, tax, legal, or other competent advisers.</p>
+          <p>In no event shall SkyBetPro or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever arising out of or in connection with your access or use or inability to access or use the website.</p>
+          
+          <h3>8. "Use at Your Own Risk" Disclaimer</h3>
+          <p>All information in the website is provided "as is", with no guarantee of completeness, accuracy, timeliness, or of the results obtained from the use of this information, and without warranty of any kind, express or implied, including, but not limited to warranties of performance, merchantability, and fitness for a particular purpose.</p>
+          <p>SkyBetPro will not be liable to you or anyone else for any decision made or action taken in reliance on the information given by the website or for any consequential, special, or similar damages, even if advised of the possibility of such damages.</p>
+          
+          <h3>9. Contact Us</h3>
+          <p>If you have any questions about this Disclaimer, please contact us at legal@skybetpro.com.</p>
+        </div>
+
+        <div id="refund-modal" class="modal-section" style="display: none;">
+          <h2>Refund and Return Policy</h2>
+          <p>Last Updated: April 24, 2023</p>
+          
+          <h3>1. Introduction</h3>
+          <p>At SkyBetPro, we value your satisfaction with our app development services. This Refund and Return Policy outlines the terms and conditions regarding refunds and the remediation process for our services.</p>
+          
+          <h3>2. Services Rendered</h3>
+          <p>SkyBetPro provides custom app development services. Our work is considered a service rather than a physical product. As such, traditional "returns" do not apply. However, we are committed to client satisfaction and have established the following refund policy.</p>
+          
+          <h3>3. Refund Policy</h3>
+          <h4>3.1 Initial Consultation and Deposit</h4>
+          <p>If you decide not to proceed with our services after the initial consultation but before any development work has begun, we will refund 75% of your initial deposit. The remaining 25% covers our time for consultation, requirement analysis, and preliminary planning.</p>
+          
+          <h4>3.2 Development in Progress</h4>
+          <p>Once development work has begun:</p>
+          <ul>
+            <li>If you cancel the project within the first week of development, a 50% refund of your initial payment may be issued at our discretion, based on the amount of work already completed.</li>
+            <li>For projects canceled after the first week of development, refunds will be prorated based on the percentage of work completed and expenses incurred.</li>
+            <li>No refunds will be issued for completed project milestones that have been approved by the client.</li>
+          </ul>
+          
+          <h4>3.3 Completed Projects</h4>
+          <p>For completed projects:</p>
+          <ul>
+            <li>SkyBetPro offers a 30-day warranty period after project completion to fix bugs and issues related to the original project scope at no additional cost.</li>
+            <li>Once a project is completed and delivered, no refunds will be issued unless the delivered application fails to meet the specifications agreed upon in the contract.</li>
+            <li>If the application does not meet agreed-upon specifications, we will first attempt to remedy the issues. Refunds will only be considered if we are unable to fulfill the contractual obligations after reasonable attempts to correct the issues.</li>
+          </ul>
+          
+          <h3>4. Exclusions</h3>
+          <p>The following situations are not eligible for refunds:</p>
+          <ul>
+            <li>Changes in project requirements after development has begun</li>
+            <li>Requests for features or functionality not specified in the original project scope</li>
+            <li>Delays caused by the client's failure to provide necessary information, feedback, or approvals</li>
+            <li>Issues arising from third-party services or APIs that are beyond our control</li>
+            <li>Changes in business strategy or market conditions affecting the client's need for the application</li>
+          </ul>
+          
+          <h3>5. Remedy Process</h3>
+          <p>If you are dissatisfied with any aspect of our services:</p>
+          <ul>
+            <li>Contact us within 30 days of project completion.</li>
+            <li>Clearly state the issues and how they deviate from the agreed-upon specifications.</li>
+            <li>Allow us a reasonable opportunity to address and resolve the issues.</li>
+            <li>If resolution cannot be achieved, a partial refund may be considered based on the nature and extent of the unresolved issues.</li>
+          </ul>
+          
+          <h3>6. Refund Processing</h3>
+          <p>All approved refunds will be processed within 10-15 business days and will be issued using the same payment method used for the original transaction, unless otherwise agreed upon.</p>
+          
+          <h3>7. Force Majeure</h3>
+          <p>SkyBetPro is not liable for any failure or delay in performance due to circumstances beyond our reasonable control, including but not limited to acts of God, natural disasters, pandemic, terrorism, riot, or governmental actions.</p>
+          
+          <h3>8. Changes to This Policy</h3>
+          <p>We reserve the right to modify this Refund and Return Policy at any time. Changes will be effective immediately upon posting to our website. It is your responsibility to review this policy periodically.</p>
+          
+          <h3>9. Contact Us</h3>
+          <p>If you have any questions about this Refund and Return Policy, please contact us at billing@skybetpro.com.</p>
+        </div>
+
+        <div id="about-modal" class="modal-section" style="display: none;">
+          <h2>About SkyBetPro</h2>
+          
+          <h3>Our Story</h3>
+          <p>Founded in 2015, SkyBetPro began with a simple mission: to make custom app development accessible to businesses of all sizes. What started as a small team of passionate developers has grown into a full-service app development company with expertise across multiple platforms and industries.</p>
+          
+          <h3>Our Mission</h3>
+          <p>We're dedicated to transforming business ideas into powerful, user-friendly applications that drive growth and engagement. We believe that technology should solve real problems and create meaningful experiences for users.</p>
+          
+          <h3>Our Team</h3>
+          <p>Our diverse team brings together experts in development, design, project management, and business strategy. With backgrounds ranging from startups to enterprise organizations, our team has the depth and breadth of experience to tackle any app development challenge.</p>
+          
+          <h3>Our Approach</h3>
+          <p>We take a collaborative, client-focused approach to every project. By understanding your business goals, target audience, and unique challenges, we create customized solutions that deliver real results. Our agile development process ensures transparency, flexibility, and consistent communication throughout the project lifecycle.</p>
+          
+          <h3>Our Values</h3>
+          <ul>
+            <li><strong>Innovation:</strong> We constantly explore new technologies and approaches to create cutting-edge solutions.</li>
+            <li><strong>Quality:</strong> We maintain the highest standards in code quality, design, and user experience.</li>
+            <li><strong>Transparency:</strong> We believe in open, honest communication with our clients at every stage.</li>
+            <li><strong>Collaboration:</strong> We work closely with our clients, treating them as true partners in the development process.</li>
+            <li><strong>Impact:</strong> We measure our success by the real-world results our applications deliver for our clients.</li>
+          </ul>
+        </div>
+
+        <div id="careers-modal" class="modal-section" style="display: none;">
+          <h2>Careers at SkyBetPro</h2>
+          
+          <h3>Why Work With Us</h3>
+          <p>At SkyBetPro, we're building a team of passionate and talented individuals who are excited about creating exceptional digital experiences. We offer a collaborative work environment, challenging projects, and opportunities for professional growth.</p>
+          
+          <h3>Our Culture</h3>
+          <p>We believe in fostering a culture of innovation, continuous learning, and work-life balance. Our team members are encouraged to experiment with new technologies, share knowledge, and contribute ideas that help shape our company's future.</p>
+          
+          <h3>Benefits</h3>
+          <ul>
+            <li>Competitive salary packages</li>
+            <li>Flexible working arrangements</li>
+            <li>Professional development opportunities</li>
+            <li>Health and wellness benefits</li>
+            <li>Collaborative and supportive team environment</li>
+            <li>Regular team building activities and events</li>
+          </ul>
+          
+          <h3>Current Openings</h3>
+          
+          <div style="border: 1px solid #e5e7eb; padding: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600;">Senior Mobile Developer (iOS/Android)</h4>
+            <p style="font-size: 0.875rem; color: #6b7280;">Full-time • Remote/Hybrid</p>
+            <p style="margin-top: 0.5rem;">We're looking for an experienced mobile developer with strong skills in iOS and/or Android development to join our growing team. In this role, you'll design and build advanced applications for the iOS/Android platforms.</p>
+          </div>
+          
+          <div style="border: 1px solid #e5e7eb; padding: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600;">UX/UI Designer</h4>
+            <p style="font-size: 0.875rem; color: #6b7280;">Full-time • Remote/Hybrid</p>
+            <p style="margin-top: 0.5rem;">We're seeking a talented UX/UI Designer to create amazing user experiences. In this role, you'll collaborate with our development team to design intuitive and visually appealing interfaces for mobile and web applications.</p>
+          </div>
+          
+          <div style="border: 1px solid #e5e7eb; padding: 1rem; border-radius: 0.5rem;">
+            <h4 style="font-weight: 600;">Full Stack Web Developer</h4>
+            <p style="font-size: 0.875rem; color: #6b7280;">Full-time • Remote/Hybrid</p>
+            <p style="margin-top: 0.5rem;">We're looking for a Full Stack Developer with experience in modern web technologies to help build and maintain web applications for our clients. You'll work on both frontend and backend development.</p>
+          </div>
+          
+          <h3 style="margin-top: 1.5rem;">How to Apply</h3>
+          <p>Interested in joining our team? Send your resume and a brief cover letter explaining why you'd be a good fit for SkyBetPro to: <a href="mailto:careers@skybetpro.com" style="color: #3b82f6;">careers@skybetpro.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    /* Modal Styles */
+    .modal-container {
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    
+    .modal-content {
+      background-color: white;
+      border-radius: 0.75rem;
+      width: 100%;
+      max-width: 800px;
+      max-height: 80vh;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .modal-header h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+    }
+    
+    .modal-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+    
+    .modal-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-section h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .modal-section h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-section p {
+      margin-bottom: 1rem;
+    }
+    
+    .modal-section ul {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .modal-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-section a {
+      color: #3b82f6;
+      text-decoration: none;
+    }
+    
+    .modal-section a:hover {
+      text-decoration: underline;
+    }
+  </style>
+
+  <script>
+    // Mobile Menu Toggle
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+      const navLinks = document.querySelector('.nav-links');
+      
+      if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+        });
+      }
+      
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          e.preventDefault();
+          
+          const targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+            
+            // Close mobile menu if open
+            if (navLinks.classList.contains('active')) {
+              navLinks.classList.remove('active');
+            }
+          }
+        });
+      });
+      
+      // Form submissions
+      const paymentForm = document.getElementById('payment-form');
+      if (paymentForm) {
+        paymentForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Thank you for your interest. In a real application, you would be redirected to a secure payment gateway.');
+        });
+      }
+      
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          alert('Thank you for your message. We will get back to you shortly.');
+          contactForm.reset();
+        });
+      }
+    });
+    
+    // Modal functions
+    function openModal(modalId) {
+      const modalContainer = document.getElementById('modal-container');
+      const modalSections = document.querySelectorAll('.modal-section');
+      const targetModal = document.getElementById(modalId);
+      const modalTitle = document.getElementById('modal-title');
+      
+      // Hide all modal sections
+      modalSections.forEach(section => {
+        section.style.display = 'none';
+      });
+      
+      // Show the target modal section
+      if (targetModal) {
+        targetModal.style.display = 'block';
+        
+        // Set the modal title based on the section's first h2
+        const sectionTitle = targetModal.querySelector('h2');
+        if (sectionTitle && modalTitle) {
+          modalTitle.textContent = sectionTitle.textContent;
+        }
+      }
+      
+      // Show the modal container
+      modalContainer.style.display = 'flex';
+      
+      // Prevent body scrolling
+      document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+      const modalContainer = document.getElementById('modal-container');
+      modalContainer.style.display = 'none';
+      
+      // Re-enable body scrolling
+      document.body.style.overflow = 'auto';
+    }
+    
+    // Close modal when clicking outside the content
+    window.addEventListener('click', function(event) {
+      const modalContainer = document.getElementById('modal-container');
+      if (event.target === modalContainer) {
+        closeModal();
+      }
+    });
+    
+    // Close modal with Escape key
+    window.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+    });
+  </script>
+</body>
+</html>
